@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button>Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click) = "authService.onProfile()">
+          <ion-icon name="contact" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-card-header>
+
+  </ion-card-header>
+  <ion-card-content>
+    <ion-card-content>
+      <ion-card-subtitle *ngIf="duree"> Durée : {{duree}} hrs</ion-card-subtitle>
+      <ion-card-title>Titre : {{nameFormation}}</ion-card-title>
+    <p>Description :<br>
+      {{descriptionFormation}}</p>
+    <p>Price : {{priceFormation}} $$</p>
+    <br>
+    <p>The course is starting from {{dateDebutFormation | date: 'medium'}}</p>
+
+    </ion-card-content>
+  </ion-card-content>
+</ion-card>
+
+<ion-button  (click)="onSubscribe()" id ="subscribeBtn" expand ="block" type ="submit"  >Subscribe to the course</ion-button>
+</ion-content>
