@@ -1,3 +1,4 @@
 # CourSeoIt_GI4_2022
 Ionic project ,developped by BOUFADDI Ikram
-There are still some feature missing and some errors in the code that will be corrected ASAP
+Below you can find the report 
+https://docs.google.com/document/d/1r0TIKXp6CX5_cAa8fttzSImtQSjQaAiVzXsvNXDq0BI/edit?usp=sharing
