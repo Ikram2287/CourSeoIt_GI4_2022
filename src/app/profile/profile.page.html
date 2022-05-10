@@ -10,16 +10,51 @@
 
 <ion-content>
   <div id ="principal">
+
+    
+    
     <div class="About">
-      <ion-card><ion-card-header>About Me</ion-card-header><ion-card-content><p>Email, password-reset</p>
-      <ion-button slot ="end">More</ion-button></ion-card-content></ion-card>
+      <ion-card>
+      <ion-card-header>About Me</ion-card-header>
+      <ion-card-content><p>Email, password-reset</p>
+
+      <button class ="MoreBtn" slot ="end" (click)="onAboutMe()">
+        <ion-icon src ="../../assets/svg/chevron-forward.svg"></ion-icon>
+      </button>
+      <div *ngIf ="pressed">
+        <div class=" info">
+          <p id ="title">My Mail</p>
+          <p style="text-align: center;">{{userMail}}<p>
+        </div>
+        <ion-button  (click)="onResetPassword()" id ="resetPassBtn" expand ="block" type ="submit"  >Reset Password</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
     </div>
-    <div class="Subscriptions">
-      <ion-card><ion-card-header>Subscriptions</ion-card-header><ion-card-content><p>Email, password-reset</p>
-        <button ion-button icon-end>
-          <ion-icon  src ="../assets/icon/user.png"></ion-icon>
-        </button></ion-card-content></ion-card>
-    </div>
+
+  <div class="Subscriptions">
+      <ion-card>
+        <ion-card-header>Subscriptions</ion-card-header>
+        <ion-card-content>
+          <p>Email, password-reset</p>
+          <button class ="MoreBtn" ion-button icon-end (click)="onSubscriptions()">
+          <ion-icon  src ="../../assets/svg/chevron-forward.svg"></ion-icon>
+        </button>
+        <div *ngIf = "pressedSub">
+          <table>
+            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <th mat-header-cell *matHeaderCellDef> Starts in </th>
+            
+            <td *ngFor="let element of subscriptions">{{ element.name }}</td>
+            <td *ngFor ="let element of subscriptions">{{element.dateDebut }}</td>
+          </table>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+    <ion-button  (click)="this.router.navigate(['dashboard'])" id ="logout" expand ="block" type ="submit"  >Log Out</ion-button>
+
   </div>
 
 </ion-content>

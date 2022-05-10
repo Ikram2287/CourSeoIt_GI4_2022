@@ -1,1 +1,11 @@
+<ion-header [translucent]="true">
+    <ion-toolbar >
+      <ion-buttons slot="start">
+        <ion-back-button>Back</ion-back-button>
+      </ion-buttons>
+      <ion-title>Logout</ion-title>
+      
+    </ion-toolbar>
+  </ion-header>
+<p style="text-align: center;">Are you sure you want to logout ? If not press back button ...</p>
 <ion-button type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button>

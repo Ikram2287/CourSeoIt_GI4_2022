@@ -7,11 +7,24 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+import { Formation } from '../Formation';
+
+export interface UserModel{
+  displayName:string;
+  email :string;
+  uid :string;
+ // subscriptions : number[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  
   userData: any;
+ 
+ 
+  userProfile :UserModel;
   //TODO : ADD To doc : In authService we injected angular firestore and fira Auth ,routing services to the service by adding them to the constructor
   constructor(
     public afStore: AngularFirestore,
@@ -30,16 +43,27 @@ export class AuthService {
       }
     });
   }
-  getUID(){
+  getUID() :string{
+     this.ngFireAuth.currentUser.then((user)=>{
+      this.userProfile.uid = user.uid;
 
+    });
+    return this.userProfile.uid;
   }
+  setUser(user :UserModel){
+    return this.userProfile = user;
+  }
+
+//To view profile
   onProfile(){
     if(this.isLoggedIn){
-      this.router.navigateByUrl('profile');
+      
+      this.router.navigateByUrl(`profile/${this.ngFireAuth.currentUser}`);
+      return true;
     }else{
-
       window.alert('Please login or sign up to continue');
       this.router.navigateByUrl('login');
+      return false;
     }
   }
 
@@ -54,23 +78,10 @@ export class AuthService {
   }
 
   // Email verification when new user register
-  /*SendVerificationMail() {
-    return this.ngFireAuth.currentUser.then((user) => {
-      return user.sendEmailVerification().then(() => {ù"é
-        this.router.navigate(['login']);
-      });
-    });
-  }
-  SendVerificationMail() {
-    return this.ngFireAuth.auth.currentUser.sendEmailVerification()
-    .then(() => {
-      this.router.navigate(['verify-email']);
-    })
-  }*/
   SendVerificationMail() {
     return this.ngFireAuth.currentUser.then(u => u.sendEmailVerification())
     .then(() => {
-      this.router.navigate(['verify-email']);
+      this.router.navigate(['email-validation']);
     })
   }
 
@@ -91,13 +102,13 @@ export class AuthService {
   // Returns true when user is looged in
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.emailIsVerified !== false ? true : false;
   }
 
   // Returns true when user's email is verified
   get isEmailVerified(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return user.emailVerified !== false ? true : false;
+    return user.emailIsVerified !== false ? true : false;
   }
 
   // Sign in with Gmail
@@ -130,7 +141,8 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       emailIsVerified: user.emailIsVerified,
-      photoURL :user.photoURL
+      //photoURL :user.photoURL,
+      userSubscriptions: user.userSubscriptions
     };
     return userRef.set(userData, {
       merge: true,
@@ -141,7 +153,7 @@ export class AuthService {
   SignOut() {
     return this.ngFireAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['list-formation']);
     });
   }
 }

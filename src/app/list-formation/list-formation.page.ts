@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Directive, Input, OnInit } from '@angular/core';
 import * as firebase from 'firebase/compat';
-import { Formation } from '../formation/Formation';
+import { Formation } from '../Formation';
 import 'firebase/firestore';
 import { FormationsService } from '../Services/Formations-service';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ import { AuthService } from '../Services/Auth-service';
   selector: 'app-list-formation',
   templateUrl: './list-formation.page.html',
   styleUrls: ['./list-formation.page.scss'],
+  //Directive :[IONIC_DIRECTIVES],
 })
 export class ListFormationPage implements OnInit {
 //@Input() selectedFormation! :Formation;
@@ -23,6 +24,7 @@ export class ListFormationPage implements OnInit {
   ngOnInit() {
     this.formations = this.formService.getAllFormation();
   }
+  
   
   /*onViewFormation() : void {
     this.router.navigateByUrl(`details/${this.selectedFormation.id}`);

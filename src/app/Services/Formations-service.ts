@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import 'firebase/firestore';
-import { Formation } from '../formation/Formation';
+import { Formation } from '../Formation';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -37,6 +37,9 @@ export class FormationsService{
     getFormationById(idFormation: number,nameFormation : string){
       return this.firestore.collection('/Courses').doc(nameFormation).valueChanges(idFormation);
     }
+    /*SubscribeOrUnsubscribe(option : 'subscribe | unsubscribe' , id : number) : void{
+
+    }*/
 
 
 }

@@ -7,19 +7,28 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form>    
+  <form >  
+    <ion-item lines="full">
+      <ion-label  position="floating">UserName</ion-label>
+      <ion-input  type="text"  required></ion-input>
+    </ion-item>  
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
       <ion-input type="text" #email required></ion-input>
     </ion-item> 
+
     <ion-item lines="full">
       <ion-label position="floating">Password</ion-label>
       <ion-input type="password" #password required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col> 
-      <ion-button type="submit" (click)="signUp(email, password)" expand="block">Register</ion-button>
+      <ion-button type="submit" (click)="signUp(email, password)" expand="block" >Register</ion-button>
       </ion-col>
     </ion-row>
   </form>
 </ion-content>
+<!--teifrauneussafra-2718@yopmail.com   12346789
+wufeiwayousa-6493@yopmail.com
+[(ngModel)] = "this.diplayName"
+-->

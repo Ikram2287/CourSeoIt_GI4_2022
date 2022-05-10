@@ -3,6 +3,7 @@ export interface User{
     email : string;
     displayName : string;
     emailIsVerified : boolean;
-    photoURL: string;
     
+    userSubscriptions : number[];
+
 }

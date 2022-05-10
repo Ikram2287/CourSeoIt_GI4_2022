@@ -24,10 +24,7 @@ const routes: Routes = [
     path: 'reset-password',
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
-  {
-    path: 'formation',
-    loadChildren: () => import('./formation/formation.module').then( m => m.FormationPageModule)
-  },
+  
   {
     path: 'list-formation',
     loadChildren: () => import('./list-formation/list-formation.module').then( m => m.ListFormationPageModule)
@@ -43,6 +40,10 @@ const routes: Routes = [
   {
     path: 'details/:id',
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'profile/:uid',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 

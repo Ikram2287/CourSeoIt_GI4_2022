@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { AuthService } from '../Services/Auth-service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from '../Services/Auth-service';
 })
 export class ResetPasswordPage implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService,private router : Router) { }
 
   ngOnInit() {
   }

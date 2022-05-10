@@ -5,9 +5,9 @@
     </ion-buttons>
     <ion-title>Details</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click) = "authService.onProfile()">
-          <ion-icon name="contact" ></ion-icon>
-      </ion-button>
+      <ion-button class="prflBtn" (click) ="authService.onProfile()">
+        <ion-icon src ="../assets/svg/person-outline.svg"></ion-icon>
+    </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -31,5 +31,5 @@
   </ion-card-content>
 </ion-card>
 
-<ion-button  (click)="onSubscribe()" id ="subscribeBtn" expand ="block" type ="submit"  >Subscribe to the course</ion-button>
+<ion-button  (click)="onSubscribe()" class ="bottomBtn"expand ="block"  type ="submit"  >{{buttonText}}</ion-button><!---->
 </ion-content>
